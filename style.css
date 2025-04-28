@@ -1,0 +1,91 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: #f0f8ff;
+  text-align: center;
+}
+
+#controls {
+  margin: 20px;
+}
+
+#gameBoard {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 80px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.card-front {
+  background: #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg width="80" height="100" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="36" fill="pink">🐾</text></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-back {
+  background-color: #ffebcd;
+  transform: rotateY(180deg);
+}
+
+#timer {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+#winScreen {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: #fff;
+  padding: 20px 40px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  animation: bounce 1s infinite;
+  font-size: 28px;
+  color: #ff69b4;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, -30%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -30%) scale(1.2);
+  }
+}

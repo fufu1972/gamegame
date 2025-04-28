@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>可愛翻牌配對遊戲 🐾</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff69b4">
+</head>
+<body>
+  <div id="controls">
+    <button id="startBtn">開始遊戲</button>
+    <button id="restartBtn">重新開始</button>
+    <div id="timer">時間: 60</div>
+  </div>
+
+  <div id="gameBoard"></div>
+
+  <div id="winScreen">
+    <h2>🎉 恭喜過關！🎉</h2>
+  </div>
+
+  <audio id="flipSound" preload="auto"></audio>
+  <audio id="correctSound" preload="auto"></audio>
+  <audio id="wrongSound" preload="auto"></audio>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('Service Worker 註冊成功:', registration.scope);
+        }, function(err) {
+          console.log('Service Worker 註冊失敗:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
